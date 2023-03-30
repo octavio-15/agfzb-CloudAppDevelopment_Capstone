@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import render, redirect
-#from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf, get_dealer_from_cf_by_id, post_request
-#from django.contrib.auth import login, logout, authenticate
+from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf, get_dealer_from_cf_by_id, post_request
+from django.contrib.auth import login, logout, authenticate
 import logging
 from datetime import datetime
 #from .models import CarModel
@@ -66,7 +66,7 @@ def registration_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context = {}
-        url = "https://63dd5b48-938d-4219-9427-d4237b002043-bluemix.cloudantnosqldb.appdomain.cloud"
+        url = "https://e29b86ca.eu-gb.apigw.appdomain.cloud/api/dealership"
         dealerships = get_dealers_from_cf(url)
         context["dealership_list"] = dealerships
         return render(request, 'djangoapp/index.html', context)
